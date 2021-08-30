@@ -8,6 +8,7 @@ export default {
   },
   plugins: [
     '@snowpack/plugin-react-refresh',
+    '@snowpack/plugin-sass',
     [
       '@snowpack/plugin-typescript',
       {
@@ -16,4 +17,7 @@ export default {
     ],
   ],
   env,
+  alias: {
+    '@': './src',
+  },
 }
