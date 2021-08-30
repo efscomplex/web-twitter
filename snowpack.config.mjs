@@ -18,5 +18,6 @@ export default {
   ],
   alias: {
     '@': './src',
+    mocking: './src/testing/__MOCK__/data.ts',
   },
 }

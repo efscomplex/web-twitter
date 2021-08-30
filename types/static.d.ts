@@ -58,3 +58,4 @@ declare module '*.png' {
 
 /* CUSTOM: ADD YOUR OWN HERE */
 declare const __SNOWPACK_ENV__
+declare module 'faker'
