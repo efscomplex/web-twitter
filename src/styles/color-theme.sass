@@ -1,3 +1,14 @@
+@media (prefers-color-scheme: dark) 
+  :root
+      --bg:  #333
+      --color: #fff
+
+
+@media (prefers-color-scheme: light) 
+  :root 
+      --bg: #fff
+      --color: #222
+
 .App 
-    background-color: #333
-    color: #fff
+    background-color: var(--bg)
+    color: var(--color)
