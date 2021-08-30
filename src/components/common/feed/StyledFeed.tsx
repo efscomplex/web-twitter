@@ -6,17 +6,15 @@ export default styled('div')`
   justify-content: center;
   align-items: flex-start;
   border-radius: 5px;
-  img {
-    --avatar-size: 4rem;
-    border-radius: 50%;
-    display: block;
-    width: var(--avatar-size);
-    max-width: 6rem;
-    height: var(--avatar-size);
-    margin-right: 1rem;
-    border: 1px solid white;
-  }
+
   .info {
     text-align: left;
+  }
+  h6 {
+    margin-bottom: 0.6rem;
+  }
+  span:nth-child(2) {
+    color: gray;
+    margin: 0 0.6rem;
   }
 `

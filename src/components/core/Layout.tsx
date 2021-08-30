@@ -7,6 +7,7 @@ const AppLayout: React.FC<any> = ({ children, ...props }) => {
 
 const Layout = styled('div')`
   height: 100vh;
+  max-height: 100vh;
 
   display: grid;
   grid-template-areas: 'aside header' 'aside main';
@@ -18,9 +19,11 @@ const Layout = styled('div')`
   }
   & > aside {
     grid-area: aside;
+    overflow-y: scroll;
   }
   & > main {
     grid-area: main;
+    overflow-y: scroll;
   }
 `
 export default AppLayout

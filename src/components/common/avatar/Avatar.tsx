@@ -1,15 +1,13 @@
-import React from 'react'
 import styled from 'styled-components'
 
-type AvatarProps = {
-  src: string
-}
-
-const Avatar: React.FC<AvatarProps> = ({ src }) => {
-  return <StyledAvatar src={src} />
-}
-const StyledAvatar = styled('img')`
-  width: 7rem;
+const Avatar = styled('img')`
+  --avatar-size: 4rem;
   border-radius: 50%;
+  display: block;
+  width: var(--avatar-size);
+  max-width: 6rem;
+  height: var(--avatar-size);
+  margin-right: 1rem;
+  border: 1px solid white;
 `
 export default Avatar

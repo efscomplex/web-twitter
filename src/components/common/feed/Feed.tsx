@@ -1,3 +1,4 @@
+import Avatar from '@/components/common/avatar/Avatar'
 import React from 'react'
 import StyledFeed from './StyledFeed'
 
@@ -17,17 +18,16 @@ const Feed: React.FC<FeedProps> = ({
   avatar,
 }) => {
   return (
-    <StyledFeed className="bg-dark text-white">
+    <StyledFeed>
       <div>
-        <img src={avatar} alt="avatar-pic" />
+        <Avatar src={avatar} alt="avatar-pic" />
       </div>
-      <div className="info">
-        <h6 className="mb-3">
+      <div>
+        <h6>
           <span>{name}</span>
-          <span>{username}</span>
+          <span>{`@${username} - ${created}h`}</span>
         </h6>
-        <p className="text-info">{text}</p>
-        <p className="text-muted">created at: {created}</p>
+        <p>{text}</p>
       </div>
     </StyledFeed>
   )
