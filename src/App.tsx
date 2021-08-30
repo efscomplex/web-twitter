@@ -6,7 +6,6 @@ import Main from '@/components/core/Main'
 
 import '@/styles/index.sass'
 interface AppProps {}
-const { GREET } = __SNOWPACK_ENV__
 
 function App({}: AppProps) {
   return (

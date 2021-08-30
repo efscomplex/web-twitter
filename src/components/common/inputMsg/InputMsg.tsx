@@ -1,9 +1,5 @@
-import React from 'react'
+import styled from 'styled-components'
 
-type InputMsgProps = {}
-
-const InputMsg: React.FC<InputMsgProps> = ({}) => {
-  return null
-}
+const InputMsg = styled('input')``
 
 export default InputMsg

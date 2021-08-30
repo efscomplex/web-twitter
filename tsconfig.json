@@ -1,5 +1,5 @@
 {
-  "include": ["src", "types", "env.js"],
+  "include": ["src", "types", "env.js", "src/testing"],
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
