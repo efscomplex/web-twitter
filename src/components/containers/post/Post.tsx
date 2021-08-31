@@ -15,7 +15,7 @@ const Post: React.FC<PostProps> = ({}) => {
             <Avatar src={getAvatar()} />
             <InputMsg />
          </div>
-         <Btn primary> Post </Btn>
+         <Btn> Post </Btn>
       </StyledPost>
    )
 }

@@ -1,6 +1,6 @@
+import ThemeProvider from '@/providers/ThemeProvider'
 import React from 'react'
 import styled from 'styled-components'
-import ThemeProvider from '@/providers/ThemeProvider'
 
 const AppLayout: React.FC<any> = ({ children, ...props }) => {
    return (

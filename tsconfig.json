@@ -1,23 +1,23 @@
 {
-  "include": ["src", "types", "env.js", "src/testing"],
-  "compilerOptions": {
-    "module": "esnext",
-    "target": "esnext",
-    "moduleResolution": "node",
-    "jsx": "preserve",
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["./src/*"],
-      "mocking": ["./src/testing/__MOCK__/data.ts"]
-    },
-    /* noEmit - Snowpack builds (emits) files, not tsc. */
-    "noEmit": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "types": ["mocha", "snowpack-env", "node"],
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "importsNotUsedAsValues": "error"
-  }
+   "include": ["src", "types", "env.js", "src/testing", "server/proxy"],
+   "compilerOptions": {
+      "module": "esnext",
+      "target": "esnext",
+      "moduleResolution": "node",
+      "jsx": "preserve",
+      "baseUrl": "./",
+      "paths": {
+         "@/*": ["./src/*"],
+         "mocking": ["./src/testing/__MOCK__/data.ts"]
+      },
+      /* noEmit - Snowpack builds (emits) files, not tsc. */
+      "noEmit": true,
+      "strict": true,
+      "skipLibCheck": true,
+      "types": ["mocha", "snowpack-env", "node"],
+      "forceConsistentCasingInFileNames": true,
+      "resolveJsonModule": true,
+      "allowSyntheticDefaultImports": true,
+      "importsNotUsedAsValues": "error"
+   }
 }
