@@ -18,6 +18,8 @@ const Timeline: React.FC<TimelineProps> = ({}) => {
       </StyledTimeline>
    )
 }
-const StyledTimeline = styled('div')``
+const StyledTimeline = styled('div')`
+   overflow-y: scroll;
+`
 
 export default Timeline

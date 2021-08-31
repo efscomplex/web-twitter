@@ -1,0 +1,21 @@
+:root
+  --surface_br: 7px
+  --primary: #1C8EDB
+  --onPrimary: #fff
+@media (prefers-color-scheme: dark) 
+  :root
+    --bg: #151d25
+    --surface: scale(#151d25, $lightness: 30%)
+    --color: #fff
+
+
+@media (prefers-color-scheme: light) 
+  :root 
+    --bg: #fff
+    --color: #222
+
+html
+    background-color: var(--bg)
+.App 
+    @extend html
+    color: var(--color)

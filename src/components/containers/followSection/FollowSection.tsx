@@ -26,8 +26,7 @@ const FollowSection: React.FC<FollowSectionProps> = ({ title, btnLabel }) => {
 }
 const Section = styled('section')`
    margin-bottom: 2rem;
-   padding: 1rem;
-
+   background-color: var(--surface);
    .follow-section_title {
       margin-bottom: 1rem;
    }

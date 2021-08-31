@@ -27,10 +27,12 @@ const UserBadge: React.FC<UserBadgeProps> = ({
    )
 }
 export const Badge = styled('div')`
+   max-width: 20rem;
    display: flex;
-   align-items: center;
-   gap: 1rem;
    justify-content: space-between;
+   align-items: center;
+
+   gap: 0.4rem;
 
    p:nth-child(2) {
       color: gray;
