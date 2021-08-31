@@ -1,5 +1,5 @@
 {
-  "include": ["src", "types", "env.js"],
+  "include": ["src", "types", "env.js", "src/testing"],
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
@@ -7,10 +7,8 @@
     "jsx": "preserve",
     "baseUrl": "./",
     "paths": {
-      // If you configured any Snowpack aliases, add them here.
-      // Add this line to get types for streaming imports (packageOptions.source="remote"):
-      //     "*": [".snowpack/types/*"]
-      // More info: https://www.snowpack.dev/guides/streaming-imports
+      "@/*": ["./src/*"],
+      "mocking": ["./src/testing/__MOCK__/data.ts"]
     },
     /* noEmit - Snowpack builds (emits) files, not tsc. */
     "noEmit": true,

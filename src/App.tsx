@@ -1,10 +1,21 @@
 import React from 'react'
+import Layout from '@/components/core/Layout'
+import Header from '@/components/core/Header'
+import Aside from '@/components/core/Aside'
+import Main from '@/components/core/Main'
+
+import '@/styles/sass/index.sass'
 
 interface AppProps {}
-const { GREET } = __SNOWPACK_ENV__
 
 function App({}: AppProps) {
-  return <div className="App">hello {GREET}</div>
+   return (
+      <Layout className="App">
+         <Header />
+         <Aside />
+         <Main />
+      </Layout>
+   )
 }
 
 export default App
