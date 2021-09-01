@@ -1,13 +1,13 @@
 import Landing from '@/components/containers/landing/Landing'
 import { useServices } from '@/services'
+import type { AuthResponse } from '@/services/firebase/Firebase'
 import React, { createContext, useContext, useState } from 'react'
 
 type AuthContext = {
    isAuth: boolean
-   setIsAuth: Function
-   auth: any
-   setAuth: Function
-   [key: string]: any
+   setIsAuth: any
+   auth: AuthResponse
+   setAuth: any
 }
 
 const AuthContext = createContext<AuthContext>({
@@ -45,7 +45,7 @@ export const useAuth = () => {
 
 const AuthProvider: React.FC = ({ children }) => {
    const [isAuth, setIsAuth] = useState(false)
-   const [auth, setAuth] = useState()
+   const [auth, setAuth] = useState<AuthResponse>({} as AuthResponse)
 
    return (
       <AuthContext.Provider value={{ isAuth, setIsAuth, auth, setAuth }}>

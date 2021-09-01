@@ -1,5 +1,10 @@
 import * as firebase from 'firebase/app'
-import { TwitterAuthProvider, signInWithPopup, getAuth } from 'firebase/auth'
+import {
+   User,
+   TwitterAuthProvider,
+   signInWithPopup,
+   getAuth,
+} from 'firebase/auth'
 
 const firebaseConfig = {
    apiKey: 'AIzaSyCvve89izlGEt8jy_hY1Pgon6tvG96Myu4',
@@ -13,9 +18,9 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig)
 
-type AuthResponse = {
+export type AuthResponse = {
    credential: any
-   user?: any
+   user: User
    error?: any
 }
 
@@ -26,6 +31,7 @@ export const twitterAuth = (): Promise<AuthResponse> => {
          .then((result) => {
             const credential = TwitterAuthProvider.credentialFromResult(result)
             const user = result.user
+            console.log(user)
             resolve({ credential, user })
          })
          .catch((error) => {
