@@ -1,6 +1,6 @@
 import { createRequest } from '@/modules/Fetch'
 import { twitterAuth } from '@/services/firebase/Firebase'
-
+import headers from './headers'
 let OAUTH_URL = 'https://api.twitter.com/oauth/request_token'
 let API_URL = 'https://api.twitter.com/2'
 
@@ -15,9 +15,10 @@ if (MODE === 'development') {
    API_URL = `${PROXY_SERVER_URL}/${API_URL}`
 }
 
-class Twitter {
+export class Twitter {
    private static instance: Twitter
    public request: ReturnType<typeof createRequest>
+   private headers = headers
 
    private constructor() {
       this.request = createRequest(API_URL)
@@ -32,9 +33,11 @@ class Twitter {
       const headers = {}
       return fetch(OAUTH_URL, { method: 'POST', headers })
    }
-
+   send(endpoint: string) {
+      return this.request.post(endpoint, this.headers)
+   }
    getResource(endpoint: string) {
-      return this.request.resource(endpoint)
+      return this.request.get(endpoint, this.headers)
    }
    login() {
       return twitterAuth()

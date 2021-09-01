@@ -1,5 +1,3 @@
-import type { RequestOptions } from 'http'
-
 export const createRequest = (url: string) => {
    class Fetch {
       constructor(public url: string) {}
@@ -8,17 +6,17 @@ export const createRequest = (url: string) => {
          return `${this.url}/${endpoint}`
       }
 
-      resource(endpoint: string, headers?: any) {
+      get(endpoint: string, headers?: HeadersInit) {
          return fetch(this.getUrl(endpoint), { headers }).then((resp) =>
             resp.json(),
          )
       }
 
-      send(endpoint: string, options: RequestInit) {
+      post(endpoint: string, headers?: HeadersInit) {
          return fetch(this.getUrl(endpoint), {
             method: 'POST',
-            ...options,
-         })
+            headers,
+         }).then((resp) => resp.json())
       }
    }
 

@@ -1,4 +1,4 @@
-import ThemeProvider from '@/providers/ThemeProvider'
+import ThemeProvider from '@/providers/theme/ThemeProvider'
 import React from 'react'
 import styled from 'styled-components'
 

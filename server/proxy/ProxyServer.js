@@ -16,3 +16,4 @@ export const createProxyServer = () => {
          })
    })
 }
+createProxyServer().then(console.log)

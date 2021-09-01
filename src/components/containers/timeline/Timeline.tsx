@@ -1,5 +1,6 @@
 import Feed from '@/components/base/feed/Feed'
 import List from '@/components/ui/list/List'
+import { useAuth } from '@/providers/auth/AuthProvider'
 import { getTweets } from 'mocking'
 import React from 'react'
 import styled from 'styled-components'
@@ -7,6 +8,8 @@ import styled from 'styled-components'
 type TimelineProps = {}
 
 const Timeline: React.FC<TimelineProps> = ({}) => {
+   //const { auth } = useAuth()
+
    return (
       <StyledTimeline>
          <List

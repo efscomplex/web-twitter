@@ -1,13 +1,10 @@
-import React from 'react'
-import Layout from '@/components/core/Layout'
-import Header from '@/components/core/Header'
 import Aside from '@/components/core/Aside'
+import Header from '@/components/core/Header'
+import Layout from '@/components/core/Layout'
 import Main from '@/components/core/Main'
-import { createTwitterService } from '@/services/twitter/Twitter'
-import AuthProvider from '@/providers/AuthProvider'
-import { Services, useServices } from '@/services'
-
+import AuthProvider from '@/providers/auth/AuthProvider'
 import '@/styles/sass/index.sass'
+import React from 'react'
 
 interface AppProps {}
 

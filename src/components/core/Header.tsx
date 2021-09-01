@@ -1,6 +1,6 @@
 import UserInfo from '@/components/base/userInfo/UserInfo'
 import Avatar from '@/components/ui/avatar/Avatar'
-import { useAuth } from '@/providers/AuthProvider'
+import { useAuth } from '@/providers/auth/AuthProvider'
 import React from 'react'
 import { AiOutlineTwitter, AiOutlineLogout } from 'react-icons/ai'
 import styled from 'styled-components'

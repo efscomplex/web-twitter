@@ -15,15 +15,15 @@ const AuthContext = createContext<AuthContext>({
 } as AuthContext)
 
 export const useAuth = () => {
-   const services = useServices()
+   const { twitter } = useServices()
    const ctxt = useContext(AuthContext)
 
    const { setIsAuth, setAuth, isAuth } = ctxt
 
    const login = () => {
-      if (isAuth) return
+      if (isAuth) return Promise.resolve('user is allready logged')
 
-      services.twitter
+      return twitter
          .login()
          .then((resp) => {
             setAuth(resp)
