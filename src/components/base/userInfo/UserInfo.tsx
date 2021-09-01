@@ -13,10 +13,10 @@ const UserInfo: React.FC<UserInfoProps> = ({
    return (
       <StyledUser>
          <Avatar src={photoURL || ''} alt="avatar-pic" />
-         <h6>
+         <div>
             <span>{displayName}</span>
             <span>{email || ''}</span>
-         </h6>
+         </div>
       </StyledUser>
    )
 }

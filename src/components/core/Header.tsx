@@ -2,19 +2,24 @@ import UserInfo from '@/components/base/userInfo/UserInfo'
 import Avatar from '@/components/ui/avatar/Avatar'
 import { useAuth } from '@/providers/AuthProvider'
 import React from 'react'
-import { AiOutlineTwitter } from 'react-icons/ai'
+import { AiOutlineTwitter, AiOutlineLogout } from 'react-icons/ai'
 import styled from 'styled-components'
 
 type HeaderProps = {}
 
 const Header: React.FC<HeaderProps> = ({}) => {
-   const { auth } = useAuth()
+   const { auth, logout } = useAuth()
 
    return (
       <StyledHeader>
          <UserInfo {...auth?.user} />
          <AiOutlineTwitter size="2rem" className="icon-twitter" />
-         <span>Tweety</span>
+         <h6 className="tweety">Tweety</h6>
+         <AiOutlineLogout
+            className="icon-logout"
+            size="1.2rem"
+            onClick={logout}
+         />
       </StyledHeader>
    )
 }
@@ -23,12 +28,11 @@ const StyledHeader = styled('header')`
    align-items: center;
    gap: 1rem;
    border-bottom: 1px solid gray;
+   .icon-logout {
+      cursor: pointer;
+   }
    .icon-twitter {
       margin-left: auto;
-   }
-   span {
-      font-size: 1.2rem;
-      margin-right: 2rem;
    }
 `
 export default Header
