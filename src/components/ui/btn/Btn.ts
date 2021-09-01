@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 const Btn = styled('button')`
    padding: 0.4rem 1rem;
-
+   display: flex;
+   align-items: center;
    border-radius: 17px;
    cursor: pointer;
 
