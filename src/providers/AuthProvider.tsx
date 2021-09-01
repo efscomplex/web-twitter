@@ -1,31 +1,54 @@
 import Landing from '@/components/containers/landing/Landing'
-import type { Services } from '@/services'
-import React, { createContext, useContext, useMemo, useState } from 'react'
+import { useServices } from '@/services'
+import React, { createContext, useContext, useState } from 'react'
 
 type AuthContext = {
    isAuth: boolean
+   setIsAuth: Function
+   auth: any
+   setAuth: Function
    [key: string]: any
 }
+
 const AuthContext = createContext<AuthContext>({
    isAuth: false,
-})
-export const useAuth = () => useContext(AuthContext)
+} as AuthContext)
 
-const AuthProvider: React.FC<{ services: Services }> = ({
-   children,
-   services,
-}) => {
+export const useAuth = () => {
+   const services = useServices()
+   const ctxt = useContext(AuthContext)
+
+   const { setIsAuth, setAuth, isAuth } = ctxt
+
+   const login = () => {
+      if (isAuth) return
+
+      services.twitter
+         .login()
+         .then((resp) => {
+            setAuth(resp)
+            setIsAuth(true)
+         })
+         .catch(console.log)
+   }
+
+   const logout = () => {
+      setIsAuth(false)
+   }
+
+   return {
+      login,
+      logout,
+      ...ctxt,
+   }
+}
+
+const AuthProvider: React.FC = ({ children }) => {
    const [isAuth, setIsAuth] = useState(false)
-   const [user, setUser] = useState()
-
-   useMemo(() => {
-      services.twitter.getToken().then((resp) => {
-         console.log(resp)
-      })
-   }, [])
+   const [auth, setAuth] = useState()
 
    return (
-      <AuthContext.Provider value={{ isAuth, setIsAuth, user, setUser }}>
+      <AuthContext.Provider value={{ isAuth, setIsAuth, auth, setAuth }}>
          {isAuth ? children : <Landing />}
       </AuthContext.Provider>
    )

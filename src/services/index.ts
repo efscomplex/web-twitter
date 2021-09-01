@@ -5,9 +5,8 @@ export type Services = {
    twitter: ReturnType<typeof createTwitterService>
 }
 
-const initialServiceState = {
+const services = {
    twitter: createTwitterService(),
 }
 
-export const useServices = () =>
-   useMemo<Services>(() => initialServiceState, [])
+export const useServices = () => useMemo<Services>(() => services, [])

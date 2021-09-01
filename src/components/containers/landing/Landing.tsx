@@ -1,12 +1,11 @@
 import Btn from '@/components/ui/btn/Btn'
+import { useAuth } from '@/providers/AuthProvider'
 import React from 'react'
 import { FaTwitter } from 'react-icons/fa'
 import styled from 'styled-components'
 
 const Landing: React.FC = () => {
-   const login = () => {
-      console.log('login')
-   }
+   const { login } = useAuth()
 
    return (
       <StyledLanding>

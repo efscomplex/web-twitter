@@ -1,5 +1,5 @@
 {
-   "include": ["src", "types", "env.js", "src/testing", "server/proxy"],
+   "include": ["src", "types", "src/env.jss", "src/testing", "server/proxy"],
    "compilerOptions": {
       "module": "esnext",
       "target": "esnext",

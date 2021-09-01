@@ -1,9 +1,8 @@
-import React from 'react'
-import { getTweets } from 'mocking'
 import Feed from '@/components/base/feed/Feed'
-import styled from 'styled-components'
-import StyledFeed from '@/components/base/feed/StyledFeed'
 import List from '@/components/ui/list/List'
+import { getTweets } from 'mocking'
+import React from 'react'
+import styled from 'styled-components'
 
 type TimelineProps = {}
 

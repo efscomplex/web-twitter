@@ -12,9 +12,8 @@ import '@/styles/sass/index.sass'
 interface AppProps {}
 
 function App({}: AppProps) {
-   const services = useServices()
    return (
-      <AuthProvider services={services}>
+      <AuthProvider>
          <Layout className="App">
             <Header />
             <Aside />

@@ -5,7 +5,7 @@ export const getTweets = () =>
       name: faker.name.firstName(),
       username: faker.name.lastName(),
       text: faker.lorem.paragraph(),
-      created: faker.date.past().getHours(),
+      created: faker.date.past().getHours().toString(),
       avatar: faker.image.avatar(),
    }))
 
