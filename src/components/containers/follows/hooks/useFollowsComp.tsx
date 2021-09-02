@@ -1,31 +1,19 @@
-import FollowsSection from '@/components/containers/follows/FollowsSection'
-import asLazy from '@/HOCs/asLazy'
-import { useUserData } from '@/providers/auth/UserDataProvider'
-import { followsQuery, FollowsType } from '@/services/twitter/api/resources'
-import { useMemo } from 'react'
+import CurrentFollows from '@/components/containers/follows/CurrentFollows'
+import SuggestedFollows from '@/components/containers/follows/SuggestedFollows'
+import useLazyComp from '@/hooks/useLazyComp'
+import { followsQuery } from '@/services/twitter/api/resources'
+import { FollowsType } from '@/services/twitter/models/twitterModels'
 
 const useFollowsComp = () => {
-   const { id } = useUserData()
-   const Followers = useMemo(
-      () =>
-         asLazy(
-            FollowsSection,
-            followsQuery({ type: FollowsType.followers }),
-            id,
-         ),
-      [id],
+   const Suggested = useLazyComp(
+      SuggestedFollows,
+      followsQuery({ type: FollowsType.followers }),
+   )
+   const Following = useLazyComp(
+      CurrentFollows,
+      followsQuery({ type: FollowsType.following }),
    )
 
-   const Following = useMemo(
-      () =>
-         asLazy(
-            FollowsSection,
-            followsQuery({ type: FollowsType.following }),
-            id,
-         ),
-      [id],
-   )
-
-   return { Followers, Following }
+   return { Suggested, Following }
 }
 export default useFollowsComp

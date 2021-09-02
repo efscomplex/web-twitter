@@ -1,11 +1,13 @@
 import Avatar from '@/components/ui/avatar/Avatar'
-import type { UserData } from '@/services/twitter/models/indext'
+import type { SelectorProps } from '@/HOCs/withSelectedUser'
+import type { UserData } from '@/services/twitter/models/twitterModels'
 import React from 'react'
 import styled from 'styled-components'
 
-type UserBadgeProps = {
+export type UserBadgeProps = {
    button: JSX.Element
-} & UserData
+} & UserData &
+   SelectorProps
 
 const UserBadge: React.FC<UserBadgeProps> = ({
    id,
@@ -13,9 +15,10 @@ const UserBadge: React.FC<UserBadgeProps> = ({
    name,
    username,
    button,
+   ...props
 }) => {
    return (
-      <Badge key={id}>
+      <Badge key={id} {...props}>
          <Avatar src={profile_image_url} />
          <article>
             <p>{name}</p>
@@ -25,17 +28,22 @@ const UserBadge: React.FC<UserBadgeProps> = ({
       </Badge>
    )
 }
-export const Badge = styled('div')`
-   max-width: 20rem;
+export const Badge = styled<any>('div')`
+   //max-width: 20rem;
+   padding: 8px;
+
    display: flex;
    justify-content: space-between;
    align-items: center;
 
-   gap: 0.4rem;
+   cursor: pointer;
+   border-radius: 8px;
+   gap: 0.8rem;
 
    p:nth-child(2) {
       color: gray;
    }
+   background-color: ${(props) => props.selected && 'var(--surface)'};
 `
 
 export default UserBadge

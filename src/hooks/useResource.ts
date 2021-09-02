@@ -1,14 +1,14 @@
-import { useUserData } from '@/providers/auth/UserDataProvider'
+import { useSession } from '@/providers/session/SessionProvider'
 import type { ResourceParams } from '@/services/twitter/api/resources'
 import { useMemo, useState } from 'react'
 
 const useResource = (fetcher: any, options: ResourceParams) => {
-   const { id } = useUserData()
+   const { user } = useSession()
    const [resource, setResource] = useState()
 
    useMemo(() => {
-      fetcher(id).then(setResource).catch()
-   }, [id])
+      fetcher(user.id).then(setResource).catch()
+   }, [user.id])
 
    return resource
 }

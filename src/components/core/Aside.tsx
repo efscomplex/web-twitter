@@ -1,16 +1,24 @@
 import useFollowsComp from '@/components/containers/follows/hooks/useFollowsComp'
 import React from 'react'
+import styled from 'styled-components'
 
 type AsideProps = {}
 
 const Aside: React.FC<AsideProps> = ({}) => {
-   const { Followers, Following } = useFollowsComp()
+   const { Suggested, Following } = useFollowsComp()
+
    return (
-      <aside>
-         <Followers title="Following" btnLabel="Unfollow" />
-         <Following title="Who to follow" btnLabel="Follow" />
-      </aside>
+      <StyledAside>
+         <Following />
+         <Suggested />
+      </StyledAside>
    )
 }
+const StyledAside = styled('aside')`
+   & > * {
+      height: 45vh;
+      overflow-y: scroll;
+   }
+`
 
 export default Aside

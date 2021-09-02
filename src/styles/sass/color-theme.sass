@@ -5,7 +5,7 @@
 @media (prefers-color-scheme: dark) 
   :root
     --bg: #151d25
-    --surface: scale(#151d25, $lightness: 30%)
+    --surface:#41474d94
     --color: #fff
 
 
@@ -13,9 +13,10 @@
   :root 
     --bg: #fff
     --color: #222
+    --surface: #999
+
 
 html
     background-color: var(--bg)
 .App 
-    @extend html
     color: var(--color)

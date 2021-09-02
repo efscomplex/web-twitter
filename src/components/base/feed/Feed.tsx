@@ -1,33 +1,25 @@
 import Avatar from '@/components/ui/avatar/Avatar'
+import type { Tweet, UserData } from '@/services/twitter/models/twitterModels'
 import React from 'react'
 import StyledFeed from './StyledFeed'
 
 type FeedProps = {
-   username: string
-   name: string
-   text: string
-   created: string
-   avatar: string
+   author: UserData
+   tweet: Tweet
 }
 
-const Feed: React.FC<FeedProps> = ({
-   name,
-   username,
-   text,
-   created,
-   avatar,
-}) => {
+const Feed: React.FC<FeedProps> = ({ author, tweet }) => {
    return (
       <StyledFeed>
          <div>
-            <Avatar src={avatar} alt="avatar-pic" />
+            <Avatar src={author.profile_image_url} alt="avatar-pic" />
          </div>
          <div>
             <h6>
-               <span>{name}</span>
-               <span>{`@${username} - ${created}h`}</span>
+               <span>{author.name}</span>
+               <span>{`@${author.username} - ${tweet.created_at}h`}</span>
             </h6>
-            <p>{text}</p>
+            <p>{tweet.text}</p>
          </div>
       </StyledFeed>
    )

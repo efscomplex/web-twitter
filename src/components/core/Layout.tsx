@@ -18,7 +18,7 @@ const Layout = styled('div')`
 
    display: grid;
    grid-template-areas: 'aside header' 'aside main';
-   grid-template-columns: minmax(35%, 20rem) 40rem;
+   grid-template-columns: minmax(35%, 25rem) 40rem;
    grid-template-rows: min-content 1fr;
 
    grid-gap: 1rem;
