@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 
-type S = React.SuspenseProps
+type S = Partial<React.SuspenseProps>
 
 function suspense<P>(Comp: React.ComponentType<P>) {
    const Suspensed: React.FC<P & S> = ({ fallback, ...props }) => (

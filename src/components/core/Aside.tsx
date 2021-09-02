@@ -1,13 +1,14 @@
-import FollowSection from '@/components/containers/followSection/FollowSection'
+import useFollowsComp from '@/components/containers/follows/hooks/useFollowsComp'
 import React from 'react'
 
 type AsideProps = {}
 
 const Aside: React.FC<AsideProps> = ({}) => {
+   const { Followers, Following } = useFollowsComp()
    return (
       <aside>
-         <FollowSection title="Following" btnLabel="Unfollow" />
-         <FollowSection title="Who to follow" btnLabel="Follow" />
+         <Followers title="Following" btnLabel="Unfollow" />
+         <Following title="Who to follow" btnLabel="Follow" />
       </aside>
    )
 }

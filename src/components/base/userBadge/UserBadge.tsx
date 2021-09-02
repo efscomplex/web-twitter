@@ -1,23 +1,22 @@
 import Avatar from '@/components/ui/avatar/Avatar'
+import type { UserData } from '@/services/twitter/models/indext'
 import React from 'react'
 import styled from 'styled-components'
 
 type UserBadgeProps = {
-   avatar: string
-   name: string
-   username: string
    button: JSX.Element
-}
+} & UserData
 
 const UserBadge: React.FC<UserBadgeProps> = ({
-   avatar,
+   id,
+   profile_image_url,
    name,
    username,
    button,
 }) => {
    return (
-      <Badge>
-         <Avatar src={avatar} />
+      <Badge key={id}>
+         <Avatar src={profile_image_url} />
          <article>
             <p>{name}</p>
             <p>{`@${username}`}</p>

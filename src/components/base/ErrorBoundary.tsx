@@ -1,13 +1,17 @@
 import React from 'react'
 
-export type ErrorMsg = ReturnType<React.FC>
-type Props = { errorMsg?: ErrorMsg }
+/**
+ * @param errorCb - the error callback a function that the component will render as a fallback
+ */
+
+type ErrorMsg = ReturnType<React.FC>
+export type ErrorBoundaryProps = { errorCb?: () => ErrorMsg }
 
 export class ErrorBoundary extends React.Component<
-   Props,
+   ErrorBoundaryProps,
    { hasError: boolean }
 > {
-   constructor(props: Props) {
+   constructor(props: ErrorBoundaryProps) {
       super(props)
       this.state = { hasError: false }
    }
@@ -19,8 +23,8 @@ export class ErrorBoundary extends React.Component<
 
    render() {
       const { hasError } = this.state
-      const { errorMsg } = this.props
+      const { errorCb } = this.props
 
-      return hasError ? errorMsg || null : this.props.children
+      return hasError ? errorCb?.() || null : this.props.children
    }
 }

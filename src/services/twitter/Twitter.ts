@@ -37,7 +37,7 @@ export class Twitter {
       return this.request.post(endpoint, this.headers)
    }
    getResource(endpoint: string) {
-      return this.request.get(endpoint, this.headers)
+      return this.request.get(endpoint, this.headers).then((resp) => resp.data)
    }
    login() {
       return twitterAuth()
