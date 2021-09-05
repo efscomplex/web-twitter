@@ -7,7 +7,7 @@ const InputMsg = styled('textarea').attrs((props) => ({
    maxLength: +config.post.maxLength,
    autoFocus: true,
    placeholder: 'type a message',
-}))`
+}))<any>`
    width: 100%;
    padding: 1rem;
    border-radius: var(--surface_br, 9px);

@@ -1,7 +1,7 @@
 import cors_proxy from 'cors-anywhere'
 
-const { SNOWPACK_PUBLIC_PROXY_HOST: host, SNOWPACK_PUBLIC_PROXY_PORT: port } =
-   __SNOWPACK_ENV__
+const host = '127.0.0.1' //SNOWPACK_PUBLIC_PROXY_HOST
+const port = '8084' //SNOWPACK_PUBLIC_PROXY_PORT
 
 export const createProxyServer = () => {
    return new Promise((resolve, reject) => {
@@ -16,3 +16,4 @@ export const createProxyServer = () => {
          })
    })
 }
+createProxyServer().then(console.log)

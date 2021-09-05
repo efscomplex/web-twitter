@@ -1,15 +1,23 @@
-import FollowSection from '@/components/containers/followSection/FollowSection'
-import React from 'react'
+import CurrentFollows from '@/components/containers/follows/CurrentFollows'
+import SuggestedFollows from '@/components/containers/follows/SuggestedFollows'
+import React, { memo } from 'react'
+import styled from 'styled-components'
 
 type AsideProps = {}
 
 const Aside: React.FC<AsideProps> = ({}) => {
    return (
-      <aside>
-         <FollowSection title="Following" btnLabel="Unfollow" />
-         <FollowSection title="Who to follow" btnLabel="Follow" />
-      </aside>
+      <StyledAside>
+         <CurrentFollows />
+         <SuggestedFollows />
+      </StyledAside>
    )
 }
+const StyledAside = styled('aside')`
+   & > * {
+      height: 45vh;
+      overflow-y: scroll;
+   }
+`
 
-export default Aside
+export default memo(Aside)

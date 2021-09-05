@@ -1,24 +1,27 @@
-import type { RequestOptions } from 'http'
-
 export const createRequest = (url: string) => {
    class Fetch {
-      constructor(public url: string) {}
+      private headers: HeadersInit | undefined
+      constructor(public url: string, headers?: HeadersInit) {}
 
+      setHeaders(headers: HeadersInit) {
+         this.headers = new Headers(headers)
+      }
       getUrl(endpoint: string) {
          return `${this.url}/${endpoint}`
       }
 
-      resource(endpoint: string, headers?: any) {
-         return fetch(this.getUrl(endpoint), { headers }).then((resp) =>
-            resp.json(),
-         )
+      get(endpoint: string, headers?: HeadersInit) {
+         return fetch(this.getUrl(endpoint), {
+            headers: headers || this.headers,
+         }).then((resp) => resp.json())
       }
 
-      send(endpoint: string, options: RequestInit) {
+      post(endpoint: string, headers?: any) {
          return fetch(this.getUrl(endpoint), {
             method: 'POST',
-            ...options,
-         })
+            headers: headers || this.headers,
+            redirect: 'follow',
+         }).then((resp) => resp.json())
       }
    }
 

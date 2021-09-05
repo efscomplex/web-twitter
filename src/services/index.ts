@@ -8,5 +8,5 @@ export type Services = {
 const services = {
    twitter: createTwitterService(),
 }
-
+// initialize services if didn't before
 export const useServices = () => useMemo<Services>(() => services, [])

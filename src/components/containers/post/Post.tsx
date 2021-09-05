@@ -1,40 +1,40 @@
 import InputMsg from '@/components/base/inputMsg/InputMsg'
+import StyledPost from '@/components/containers/post/StyledPost'
 import Avatar from '@/components/ui/avatar/Avatar'
 import Btn from '@/components/ui/btn/Btn'
-import { getAvatar } from '@/testing/__MOCK__/data'
-import React from 'react'
-import styled from 'styled-components'
+import Dots from '@/components/ui/spinners/Dots'
+import useQuery from '@/hooks/useQuery'
+import { useSession } from '@/providers/session/UserSessionProvider'
+import { twitting } from '@/services/twitter/api/resources'
+import React, { useRef } from 'react'
+import withErrorBoundary from '@/HOCs/withErrorBoundary'
 
 type PostProps = {}
 
 const Post: React.FC<PostProps> = ({}) => {
+   const { user } = useSession()
+
+   const { loading, query } = useQuery(twitting)
+   const msgRef = useRef<HTMLInputElement | null>(null)
+
+   const onPost = () => {
+      query(msgRef.current?.value)
+   }
+   console.log(user)
+
    return (
       <StyledPost>
          <h4 className="post-title">Post a new message</h4>
          <div className="post-msg">
-            <Avatar src={getAvatar()} />
-            <InputMsg />
+            <Avatar src={user.details.profile_image_url} />
+            <InputMsg ref={msgRef} />
          </div>
-         <Btn> Post </Btn>
+         <Btn onClick={onPost} disabled={loading}>
+            Post
+            {loading && <Dots size={'12'} />}
+         </Btn>
       </StyledPost>
    )
 }
 
-const StyledPost = styled('div')`
-   padding: 1rem 0;
-
-   .post-title {
-      margin-bottom: 1rem;
-   }
-   .post-msg {
-      display: flex;
-      gap: 1rem;
-
-      margin-bottom: 1rem;
-   }
-   button {
-      display: block;
-      margin-left: auto;
-   }
-`
-export default Post
+export default withErrorBoundary(Post)
