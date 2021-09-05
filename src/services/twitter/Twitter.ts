@@ -5,7 +5,10 @@ import { API_URL_v1, API_URL_v2, BEARER_TOKEN } from './twitterConf'
 export class Twitter {
    private static instance: Twitter
    private oauth: Oauth | undefined
-   private headers_bearer = { Authorization: `Bearer ${BEARER_TOKEN}` }
+   private headers_bearer = {
+      'Access-Control-Allow-Origin': '*',
+      Authorization: `Bearer ${BEARER_TOKEN}`,
+   }
 
    public api_v1: ReturnType<typeof createRequest> = createRequest(API_URL_v1)
    public api_v2: ReturnType<typeof createRequest> = createRequest(API_URL_v2)

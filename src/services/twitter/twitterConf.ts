@@ -7,7 +7,6 @@ const BEARER_TOKEN = SNOWPACK_PUBLIC_BEARER_TOKEN_TWITTER
 let API_URL_v2 = 'https://api.twitter.com/2'
 let API_URL_v1 = 'https://api.twitter.com/1.1'
 
-const MODE = 'development'
 const host = '127.0.0.1' //SNOWPACK_PUBLIC_PROXY_HOST
 const port = '8084' //SNOWPACK_PUBLIC_PROXY_PORT
 
