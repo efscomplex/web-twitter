@@ -1,16 +1,19 @@
-# New Project
+# Web Twitter
 
 > ✨ Bootstrapped with Create Snowpack App (CSA).
 
 ## Available Scripts
 
-### npm start
+### npm start:app
 
-Runs the app in the development mode.
-Open http://localhost:8080 to view it in the browser.
+Starts a proxy server to avoid policy CORS to access the twitter API and runs the app in the development mode in http://localhost:8080
 
 The page will reload if you make edits.
 You will also see any lint errors in the console.
+
+### npm start
+
+Runs the app in the development mode. It doesn't works without the proxy server.
 
 ### npm run build
 
