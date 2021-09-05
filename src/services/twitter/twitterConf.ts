@@ -1,5 +1,8 @@
-const BEARER_TOKEN =
-   'AAAAAAAAAAAAAAAAAAAAACXpTAEAAAAAaORDKUje94zRBplCvMRjOezackQ%3Duw7rE45g6umQbYoAY61I6QQLEJTQ5iHAd6R8YaGMYZHCty3wtH'
+import.meta.env
+
+const { SNOWPACK_PUBLIC_BEARER_TOKEN_TWITTER } = __SNOWPACK_ENV__
+
+const BEARER_TOKEN = SNOWPACK_PUBLIC_BEARER_TOKEN_TWITTER
 
 let API_URL_v2 = 'https://api.twitter.com/2'
 let API_URL_v1 = 'https://api.twitter.com/1.1'
