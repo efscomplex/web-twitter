@@ -52,7 +52,8 @@ const UserSessionProvider: React.FC = ({ children }) => {
          .catch(setError)
    }, [])
 
-   if (error) return <h1> ups!! something was wrong - 404</h1>
+   if (error)
+      return <h1 style={{ color: 'gray' }}> ups!! something was wrong - 404</h1>
    return (
       <SessionContext.Provider
          value={{ user, selectedUserId, setSelectedUserId, dispatch }}

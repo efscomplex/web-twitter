@@ -13,7 +13,7 @@ const port = '8084' //SNOWPACK_PUBLIC_PROXY_PORT
 
 const PROXY_SERVER_URL = `http://${host}:${port}`
 
-if (MODE === 'development') {
+if (__SNOWPACK_ENV__.MODE === 'development') {
    API_URL_v1 = `${PROXY_SERVER_URL}/${API_URL_v1}`
    API_URL_v2 = `${PROXY_SERVER_URL}/${API_URL_v2}`
 }
