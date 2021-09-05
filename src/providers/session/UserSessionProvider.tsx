@@ -1,4 +1,4 @@
-import Dots from '@/components/ui/spinners/Dots'
+import Waves from '@/components/ui/spinners/Waves'
 import { useAuth } from '@/providers/auth/AuthProvider'
 import sessionReducer, {
    UserAction,
@@ -39,7 +39,6 @@ const UserSessionProvider: React.FC = ({ children }) => {
    const { auth } = useAuth()
    const [error, setError] = useState<any>(null)
    const [loading, setLoading] = useState(true)
-   //const { loading, error, query } = useQuery(getStaticProps)
    const [selectedUserId, setSelectedUserId] = useState<string | null>(null)
    const [user, dispatch] = useReducer(sessionReducer, {} as UserState)
 
@@ -58,7 +57,7 @@ const UserSessionProvider: React.FC = ({ children }) => {
       <SessionContext.Provider
          value={{ user, selectedUserId, setSelectedUserId, dispatch }}
       >
-         {loading ? <Dots /> : children}
+         {loading ? <Waves /> : children}
       </SessionContext.Provider>
    )
 }

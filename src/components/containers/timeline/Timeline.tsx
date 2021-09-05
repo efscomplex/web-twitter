@@ -1,22 +1,14 @@
 import Feed from '@/components/base/feed/Feed'
 import feedsMapper from '@/components/containers/timeline/feedsMapper'
+import useToggleTimeline from '@/components/containers/timeline/useToggleTimeline'
 import List from '@/components/ui/list/List'
-import { UserAction } from '@/providers/session/reducer'
 import { useSession } from '@/providers/session/UserSessionProvider'
-import { userTimeline } from '@/services/twitter/api/resources'
-import React, { useEffect, useMemo } from 'react'
+import React, { useMemo } from 'react'
 import styled from 'styled-components'
 
 const Timeline: React.FC = () => {
-   const { selectedUserId, user, dispatch } = useSession()
-
-   useEffect(() => {
-      if (!selectedUserId) return
-
-      userTimeline(selectedUserId).then((data) => {
-         dispatch({ action: UserAction.SET_TIMELINE, payload: data })
-      })
-   }, [selectedUserId])
+   const { selectedUserId, user } = useSession()
+   useToggleTimeline()
 
    const feeds = useMemo(() => {
       if (!user.timeline) return null

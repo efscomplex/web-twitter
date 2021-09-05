@@ -20,6 +20,7 @@ const Post: React.FC<PostProps> = ({}) => {
    const onPost = () => {
       query(msgRef.current?.value)
    }
+   console.log(user)
 
    return (
       <StyledPost>

@@ -1,4 +1,4 @@
-import Protected from '@/components/containers/protected/Protected'
+import Private from '@/components/containers/private/Private'
 import AuthProvider from '@/providers/auth/AuthProvider'
 import '@/styles/sass/index.sass'
 import React from 'react'
@@ -8,7 +8,7 @@ interface AppProps {}
 function App({}: AppProps) {
    return (
       <AuthProvider>
-         <Protected />
+         <Private />
       </AuthProvider>
    )
 }

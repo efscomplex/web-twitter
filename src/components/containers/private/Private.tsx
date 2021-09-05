@@ -5,9 +5,9 @@ import Main from '@/components/core/Main'
 import UserSessionProvider from '@/providers/session/UserSessionProvider'
 import React from 'react'
 
-type ProtectedProps = {}
+type PrivateProps = {}
 
-const Protected: React.FC<ProtectedProps> = ({}) => {
+const Private: React.FC<PrivateProps> = ({}) => {
    return (
       <UserSessionProvider>
          <Layout className="App">
@@ -19,4 +19,4 @@ const Protected: React.FC<ProtectedProps> = ({}) => {
    )
 }
 
-export default Protected
+export default Private

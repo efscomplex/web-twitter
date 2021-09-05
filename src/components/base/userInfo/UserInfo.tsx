@@ -1,6 +1,5 @@
 import Avatar from '@/components/ui/avatar/Avatar'
 import type { UserData } from '@/services/twitter/models/twitterModels'
-import type { User } from '@firebase/auth'
 import React from 'react'
 import styled from 'styled-components'
 
