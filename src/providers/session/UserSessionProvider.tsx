@@ -1,4 +1,5 @@
-import withStaticProps from '@/HOCs/withStaticProps'
+import Dots from '@/components/ui/spinners/Dots'
+import { useAuth } from '@/providers/auth/AuthProvider'
 import sessionReducer, {
    UserAction,
    UserState,
@@ -34,30 +35,35 @@ const SessionContext = createContext<SessionContext>(
 
 export const useSession = () => useContext(SessionContext)
 
-type Props = {
-   session: UserState
-}
-
-const UserSessionProvider: React.FC<Props> = ({ children, session }) => {
+const UserSessionProvider: React.FC = ({ children }) => {
+   const { auth } = useAuth()
+   const [error, setError] = useState<any>(null)
+   const [loading, setLoading] = useState(true)
+   //const { loading, error, query } = useQuery(getStaticProps)
    const [selectedUserId, setSelectedUserId] = useState<string | null>(null)
    const [user, dispatch] = useReducer(sessionReducer, {} as UserState)
 
    useEffect(() => {
-      dispatch({ action: UserAction.SET_SESSION, payload: session })
+      const context = { userId: auth.user.userId }
+      getStaticProps(context)
+         .then((data) => {
+            dispatch({ action: UserAction.SET_SESSION, payload: data })
+            setLoading(false)
+         })
+         .catch(setError)
    }, [])
 
+   if (error) return <h1> ups!! something was wrong - 404</h1>
    return (
       <SessionContext.Provider
          value={{ user, selectedUserId, setSelectedUserId, dispatch }}
       >
-         {children}
+         {loading ? <Dots /> : children}
       </SessionContext.Provider>
    )
 }
 
 export const getStaticProps = async (context: any) => {
-   console.log(context)
-   console.count('get static')
    const { userId } = context
 
    const suggestedQuery = getFollowsQuery({ type: FollowsType.followers })
@@ -68,18 +74,14 @@ export const getStaticProps = async (context: any) => {
    const following = await followingQuery(userId)
 
    const followingUsernames = following.map((f) => f.username)
-   const timeline = tweetsByUsernames(followingUsernames)
+   const timeline = await tweetsByUsernames(followingUsernames)
 
-   const session = {
+   return {
       details,
       suggested,
       following,
       timeline,
    }
-
-   return {
-      session,
-   }
 }
 
-export default withStaticProps(UserSessionProvider, getStaticProps)
+export default UserSessionProvider

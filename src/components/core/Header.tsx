@@ -1,5 +1,6 @@
 import UserInfo from '@/components/base/userInfo/UserInfo'
 import { useAuth } from '@/providers/auth/AuthProvider'
+import { useSession } from '@/providers/session/UserSessionProvider'
 import React from 'react'
 import { AiOutlineLogout, AiOutlineTwitter } from 'react-icons/ai'
 import styled from 'styled-components'
@@ -7,11 +8,12 @@ import styled from 'styled-components'
 type HeaderProps = {}
 
 const Header: React.FC<HeaderProps> = ({}) => {
-   const { auth, logout } = useAuth()
+   const { logout } = useAuth()
+   const { user } = useSession()
 
    return (
       <StyledHeader>
-         <UserInfo {...auth?.user} />
+         <UserInfo {...user.details} />
          <AiOutlineTwitter size="2rem" className="icon-twitter" />
          <h6 className="tweety">Tweety</h6>
          <AiOutlineLogout

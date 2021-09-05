@@ -1,15 +1,12 @@
-import asLazy, { WithInitialData } from '@/HOCs/asLazy'
-import { useSession } from '@/providers/session/UserSessionProvider'
-import React, { useMemo } from 'react'
+import withStaticProps, { GetStaticProps } from '@/HOCs/withStaticProps'
+import React, { useRef } from 'react'
 
-const useLacyComp = <P extends WithInitialData>(
+const useLacyComp = <P, C>(
    Component: React.ComponentType<P>,
-   query: any,
+   getStaticProps: GetStaticProps<C>,
+   context?: any,
 ) => {
-   const { user } = useSession()
-   return useMemo(
-      () => asLazy(Component, query, user.details.id),
-      [user.details.id],
-   )
+   return useRef(withStaticProps(Component, getStaticProps, context)).current
 }
+
 export default useLacyComp

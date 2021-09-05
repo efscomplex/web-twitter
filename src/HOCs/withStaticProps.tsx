@@ -7,9 +7,11 @@ function withProps<P>(Comp: React.ComponentType<P>, props: P) {
 
    return Wrap
 }
+export type GetStaticProps<Context, R = any> = (context?: Context) => Promise<R>
+
 function withStaticProps<Props, C>(
    Comp: React.ComponentType<Props>,
-   getStaticProps: (context?: C) => Promise<any>,
+   getStaticProps: GetStaticProps<C>,
    context?: C,
 ) {
    return asResource(

@@ -26,6 +26,7 @@ const CurrentFollows: React.FC = () => {
       ),
       [selectedUserId, onFollowBtn],
    )
+   console.log(user)
 
    if (!user.suggested) return null
    return (

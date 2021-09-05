@@ -1,21 +1,22 @@
 import Avatar from '@/components/ui/avatar/Avatar'
+import type { UserData } from '@/services/twitter/models/twitterModels'
 import type { User } from '@firebase/auth'
 import React from 'react'
 import styled from 'styled-components'
 
-export type UserInfoProps = User
+export type UserInfoProps = UserData
 
 const UserInfo: React.FC<UserInfoProps> = ({
-   photoURL,
-   displayName,
-   email,
+   profile_image_url,
+   username,
+   name,
 }) => {
    return (
       <StyledUser>
-         <Avatar src={photoURL || ''} alt="avatar-pic" />
+         <Avatar src={profile_image_url || ''} alt="avatar-pic" />
          <div>
-            <span>{displayName}</span>
-            <span>{email || ''}</span>
+            <p>{name}</p>
+            <p style={{ opacity: '.6' }}>{`@${username}`}</p>
          </div>
       </StyledUser>
    )

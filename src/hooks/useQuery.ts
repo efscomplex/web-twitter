@@ -1,24 +1,24 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useMemo, useState } from 'react'
 
 const useQuery = (fetcher: any) => {
-   const [data, setData] = useState()
+   const [error, setError] = useState<any>(null)
    const [loading, setLoading] = useState(false)
-   const [error, setError] = useState(null)
 
    const query = useCallback(
-      (params: any) => {
-         setLoading(true)
-         return fetcher(params)
-            .then(setData)
-            .catch(setError)
-            .finally(() => {
-               setLoading(false)
-            })
+      async (params: any) => {
+         try {
+            const data = await fetcher(params)
+            setLoading(false)
+            return data
+         } catch (err) {
+            setError(err)
+            setLoading(false)
+         }
       },
       [fetcher],
    )
 
-   return { query, loading, error, data }
+   return { query, loading, error }
 }
 
 export default useQuery
