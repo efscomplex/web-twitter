@@ -1,4 +1,4 @@
-import Twitter from 'twitter-lite'
+/* import Twitter from 'twitter-lite'
 
 const consumer_key = 'cnMEmP5tdY2nXVA4iWlrq40Ri'
 const consumer_secret = 'YOruMwJjiPiiPivE2G09gnBqfHjd08j7Kt758SH1hSw1AkkUrR'
@@ -24,3 +24,4 @@ export class TwClient {
       return this.client.post(endpoint, data)
    }
 }
+ */
