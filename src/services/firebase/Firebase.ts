@@ -1,11 +1,10 @@
 import getUserIdFromUrl from '@/utilities/getUserIdFromUrl'
 import * as firebase from 'firebase/app'
 import {
-   User,
-   TwitterAuthProvider,
-   signInWithPopup,
    getAuth,
-   UserCredential,
+   signInWithPopup,
+   TwitterAuthProvider,
+   User,
 } from 'firebase/auth'
 
 const firebaseConfig = {
@@ -30,7 +29,7 @@ export const twitterAuth = (): Promise<AuthResponse> => {
    return new Promise((resolve, reject) => {
       const provider = new TwitterAuthProvider()
       signInWithPopup(getAuth(), provider)
-         .then((result: UserCredential) => {
+         .then((result: any) => {
             const userId = getUserIdFromUrl(result._tokenResponse.federatedId)
             const credential = TwitterAuthProvider.credentialFromResult(result)
             const oauth_credential = {

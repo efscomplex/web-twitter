@@ -1,11 +1,10 @@
-import UserBadge, {
-   UserBadgeProps,
-} from '@/components/base/userBadge/UserBadge'
+import type { UserBadgeProps } from '@/components/base/userBadge/UserBadge'
+import UserBadge from '@/components/base/userBadge/UserBadge'
 import FollowsSection from '@/components/containers/follows/FollowsSection'
 import Btn from '@/components/ui/btn/Btn'
 import withSelectedUser from '@/HOCs/withSelectedUser'
 import { useSession } from '@/providers/session/UserSessionProvider'
-import { UserData } from '@/services/twitter/models/twitterModels'
+import type { UserData } from '@/services/twitter/models/twitterModels'
 import React, { useCallback } from 'react'
 
 const Badge = withSelectedUser<UserBadgeProps>(UserBadge)

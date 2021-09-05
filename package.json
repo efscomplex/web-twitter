@@ -4,27 +4,22 @@
    "type": "module",
    "scripts": {
       "start:app": "yarn start & node server/proxy/proxyServer.js",
-      "start": "snowpack dev --polyfill-node ",
-      "build": "snowpack build --polyfill-node ",
+      "start": "snowpack dev --polyfill-node",
+      "build": "snowpack build --polyfill-node",
       "test": "web-test-runner \"src/testing/**/*.test.tsx\"",
       "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
       "lint": "prettier --check \"src/**/*.{js,jsx,ts,tsx}\""
    },
    "dependencies": {
       "cors-anywhere": "^0.4.4",
-      "crypto": "^1.0.1",
-      "crypto.js": "^2.0.5",
       "encodeurl": "^1.0.2",
       "faker": "^5.5.3",
       "firebase": "^9.0.1",
-      "hash.js": "^1.1.7",
-      "oauth-1.0a": "^2.2.6",
       "oauth-signature": "^1.5.0",
       "react": "^17.0.2",
       "react-dom": "^17.0.2",
       "react-icons": "^4.2.0",
-      "styled-components": "^5.3.1",
-      "twitter-lite": "^1.1.0"
+      "styled-components": "^5.3.1"
    },
    "devDependencies": {
       "@snowpack/plugin-dotenv": "^2.2.0",
