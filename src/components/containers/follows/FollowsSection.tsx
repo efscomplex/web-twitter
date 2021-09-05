@@ -1,5 +1,5 @@
 import List from '@/components/ui/list/List'
-import { useSession } from '@/providers/session/SessionProvider'
+import { useSession } from '@/providers/session/UserSessionProvider'
 import type { UserData } from '@/services/twitter/models/twitterModels'
 import React from 'react'
 import styled from 'styled-components'

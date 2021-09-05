@@ -26,10 +26,10 @@ export const useAuth = () => {
       return twitter
          .login()
          .then((resp) => {
+            twitter.setCredential(resp.oauth_credential)
             setAuth(resp)
             setIsAuth(true)
          })
-         .catch(console.log)
    }
 
    const logout = () => {

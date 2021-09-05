@@ -1,16 +1,15 @@
-import useFollowsComp from '@/components/containers/follows/hooks/useFollowsComp'
-import React from 'react'
+import CurrentFollows from '@/components/containers/follows/CurrentFollows'
+import SuggestedFollows from '@/components/containers/follows/SuggestedFollows'
+import React, { memo } from 'react'
 import styled from 'styled-components'
 
 type AsideProps = {}
 
 const Aside: React.FC<AsideProps> = ({}) => {
-   const { Suggested, Following } = useFollowsComp()
-
    return (
       <StyledAside>
-         <Following />
-         <Suggested />
+         <CurrentFollows />
+         <SuggestedFollows />
       </StyledAside>
    )
 }
@@ -21,4 +20,4 @@ const StyledAside = styled('aside')`
    }
 `
 
-export default Aside
+export default memo(Aside)

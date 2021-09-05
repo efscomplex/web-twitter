@@ -1,22 +1,29 @@
+// dark theme
+$dark-bg: #10171d
+$dark-surface: #212f3b
+$dark-color: #fff
+
+// light theme
+$light-bg: #fff
+$light-surface: #e2e2e2
+$light-color: #111
+
 :root
   --surface_br: 7px
   --primary: #1C8EDB
   --onPrimary: #fff
 @media (prefers-color-scheme: dark) 
   :root
-    --bg: #151d25
-    --surface:#41474d94
-    --color: #fff
-
+    --bg: #{$dark-bg}
+    --surface:#{$dark-surface}
+    --color: #{$dark-color}
 
 @media (prefers-color-scheme: light) 
   :root 
-    --bg: #fff
-    --color: #222
-    --surface: #999
-
-
+    --bg: #{$light-bg}
+    --surface:#{$light-surface}
+    --color: #{$light-color}
 html
-    background-color: var(--bg)
+  background-color: var(--bg)
 .App 
-    color: var(--color)
+  color: var(--color)

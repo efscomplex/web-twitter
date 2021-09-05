@@ -1,5 +1,5 @@
 import asLazy, { WithInitialData } from '@/HOCs/asLazy'
-import { useSession } from '@/providers/session/SessionProvider'
+import { useSession } from '@/providers/session/UserSessionProvider'
 import React, { useMemo } from 'react'
 
 const useLacyComp = <P extends WithInitialData>(
@@ -7,6 +7,9 @@ const useLacyComp = <P extends WithInitialData>(
    query: any,
 ) => {
    const { user } = useSession()
-   return useMemo(() => asLazy(Component, query, user.id), [user.id])
+   return useMemo(
+      () => asLazy(Component, query, user.details.id),
+      [user.details.id],
+   )
 }
 export default useLacyComp

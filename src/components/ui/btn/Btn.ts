@@ -11,7 +11,7 @@ const Btn = styled('button')`
    background-color: ${(props) =>
       props.theme.primary ? 'var(--primary)' : '#fff'};
    color: ${(props) => props.theme.onPrimary || '#222'};
-
+   opacity: ${(props) => props.disabled && 0.4};
    transition: transform ease-in-out 250ms;
    text-transform: capitalize;
    &:hover {

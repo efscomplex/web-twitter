@@ -1,30 +1,23 @@
 import UserBadge from '@/components/base/userBadge/UserBadge'
 import FollowsSection from '@/components/containers/follows/FollowsSection'
 import Btn from '@/components/ui/btn/Btn'
-import { useSession } from '@/providers/session/SessionProvider'
-import type { UserData } from '@/services/twitter/models/twitterModels'
+import { useSession } from '@/providers/session/UserSessionProvider'
+import { UserData } from '@/services/twitter/models/twitterModels'
 import React from 'react'
 
-type SuggestedFollowsProps = {
-   initialData: UserData[]
-}
-const SuggestedFollows: React.FC<SuggestedFollowsProps> = ({ initialData }) => {
-   const { selectedUserId } = useSession()
+const SuggestedFollows: React.FC = () => {
+   const { user } = useSession()
 
-   const onFollwBtn = () => {
-      console.log('hfds sdf a9')
-   }
+   const onFollowBtn = () => {}
    const badgeRender = (user: UserData) => (
-      <UserBadge
-         {...user}
-         selected={selectedUserId === user.id}
-         button={<Btn onClick={onFollwBtn}>Follow</Btn>}
-      />
+      <UserBadge {...user} button={<Btn onClick={onFollowBtn}>Follow</Btn>} />
    )
+
+   if (!user.suggested) return null
    return (
       <FollowsSection
          title="Suggested users"
-         users={initialData}
+         users={user.suggested}
          badgeRender={badgeRender}
       />
    )

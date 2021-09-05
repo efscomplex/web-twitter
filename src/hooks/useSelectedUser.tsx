@@ -1,4 +1,4 @@
-import { useSession } from '@/providers/session/SessionProvider'
+import { useSession } from '@/providers/session/UserSessionProvider'
 import { useCallback } from 'react'
 
 const useSelectedUser = (id: string, selected: boolean) => {
@@ -6,7 +6,7 @@ const useSelectedUser = (id: string, selected: boolean) => {
 
    const onSelect = useCallback(() => {
       selected ? setSelectedUserId(null) : setSelectedUserId(id)
-   }, [selected, setSelectedUserId])
+   }, [selected, setSelectedUserId, id])
 
    return onSelect
 }

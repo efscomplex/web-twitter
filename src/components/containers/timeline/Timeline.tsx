@@ -1,24 +1,29 @@
 import Feed from '@/components/base/feed/Feed'
+import feedsMapper from '@/components/containers/timeline/feedsMapper'
 import List from '@/components/ui/list/List'
-import type { TimelineTweet } from '@/services/twitter/models/twitterModels'
-import React, { useMemo } from 'react'
+import { UserAction } from '@/providers/session/reducer'
+import { useSession } from '@/providers/session/UserSessionProvider'
+import { userTimeline } from '@/services/twitter/api/resources'
+import React, { useEffect, useMemo } from 'react'
 import styled from 'styled-components'
-import type { UserData } from '@/services/twitter/models/twitterModels'
 
-type TimelineProps = {
-   initialData: TimelineTweet
-}
+const Timeline: React.FC = () => {
+   const { selectedUserId, user, dispatch } = useSession()
 
-const Timeline: React.FC<TimelineProps> = ({ initialData }) => {
+   useEffect(() => {
+      if (!selectedUserId) return
+
+      userTimeline(selectedUserId).then((data) => {
+         dispatch({ action: UserAction.SET_TIMELINE, payload: data })
+      })
+   }, [selectedUserId])
+
    const feeds = useMemo(() => {
-      const { tweets, authors } = initialData
-      return tweets.map((tweet) => ({
-         tweet,
-         author: authors.find(
-            (author) => author.id === tweet.author_id,
-         ) as UserData,
-      }))
-   }, [initialData])
+      if (!user.timeline) return null
+      return feedsMapper(user.timeline, selectedUserId)
+   }, [user.timeline])
+
+   if (!feeds) return null
 
    return (
       <StyledTimeline>
@@ -30,6 +35,7 @@ const Timeline: React.FC<TimelineProps> = ({ initialData }) => {
       </StyledTimeline>
    )
 }
+
 const StyledTimeline = styled('div')`
    overflow-y: scroll;
 `
