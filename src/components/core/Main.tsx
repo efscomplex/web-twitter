@@ -3,9 +3,7 @@ import Timeline from '@/components/containers/timeline/Timeline'
 import React from 'react'
 import styled from 'styled-components'
 
-type MainProps = {}
-
-const Main: React.FC<MainProps> = ({}) => {
+const Main: React.FC = () => {
    return (
       <StyledMain>
          <Timeline />

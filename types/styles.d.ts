@@ -1,4 +1,4 @@
-import 'styled-components'
+/* import 'styled-components' */
 declare module '*.module.css' {
    const classes: { [key: string]: string }
    export default classes
@@ -26,8 +26,7 @@ declare module '*.scss'
 declare module '*.sass'
 declare module '*.less'
 declare module '*.styl'
-
-declare module 'styled-components' {
+/* declare module 'styled-components' {
    export interface DefaultTheme {
       br: string
       surface_br: string
@@ -36,4 +35,4 @@ declare module 'styled-components' {
       color: string
       bg: string
    }
-}
+} */

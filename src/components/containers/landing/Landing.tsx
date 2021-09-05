@@ -1,5 +1,5 @@
 import Btn from '@/components/ui/btn/Btn'
-import { useAuth } from '@/providers/AuthProvider'
+import { useAuth } from '@/providers/auth/AuthProvider'
 import React from 'react'
 import { FaTwitter } from 'react-icons/fa'
 import styled from 'styled-components'
