@@ -6,7 +6,7 @@ export class Twitter {
    private static instance: Twitter
    private oauth: Oauth | undefined
    private headers_bearer = {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'https://web-twitter.netlify.app/',
       Authorization: `Bearer ${BEARER_TOKEN}`,
    }
 
